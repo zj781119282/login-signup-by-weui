@@ -11,7 +11,7 @@
     <captcha/>
 
     <div class="weui-btn-area">
-      <a href="javascript:;" class="weui-btn weui-btn_primary">
+      <a href="javascript:;" @click="request();" class="weui-btn weui-btn_primary">
         登录
       </a>
     </div>
@@ -30,9 +30,25 @@
   import user from '../common/user';
   import password from '../common/password';
   import captcha from '../common/captcha';
+  import $ajax from '../../tools/Ajax';
 
   export default {
     name: 'Login',
+    methods: {
+      request() {
+        $ajax({
+          method: 'post',
+          url:'sfasfafasfas',
+          headers: {
+            lang: 'en-US',
+          },
+          data: {
+            a: 'b',
+            c: 'd',
+          }
+        });
+      },
+    },
     components: {
       user,
       password,
