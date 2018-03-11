@@ -69,7 +69,7 @@ function $ajax(obj) {
     };
 
     obj.method.toLowerCase() === 'post' ? xhr.send(JSON.stringify(obj.data)) : xhr.send();
-  })
+  });
 }
 
 export default $ajax

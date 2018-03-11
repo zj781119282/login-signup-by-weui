@@ -29,6 +29,8 @@
 </template>
 
 <script>
+  import Cookies from 'js-cookie';
+
   import user from '../common/user';
   import password from '../common/password';
   import phone from '../common/phone';
@@ -36,12 +38,17 @@
 
   export default {
     name: 'signup',
+    mounted() {
+      if (Cookies.get('isLogged') === 'true') {
+        this.$router.push('index');
+      }
+    },
     components: {
       user,
       password,
       phone,
       captcha,
-    }
+    },
   };
 </script>
 

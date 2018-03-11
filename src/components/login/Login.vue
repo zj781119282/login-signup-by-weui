@@ -11,7 +11,7 @@
     <captcha/>
 
     <div class="weui-btn-area">
-      <a href="javascript:;" @click="request();" class="weui-btn weui-btn_primary">
+      <a href="javascript:;" @click="login();" class="weui-btn weui-btn_primary">
         登录
       </a>
     </div>
@@ -27,6 +27,8 @@
 </template>
 
 <script>
+  import Cookies from 'js-cookie';
+
   import user from '../common/user';
   import password from '../common/password';
   import captcha from '../common/captcha';
@@ -34,6 +36,11 @@
 
   export default {
     name: 'Login',
+    mounted() {
+      if (Cookies.get('isLogged') === 'true') {
+        this.$router.push('index');
+      }
+    },
     methods: {
       request() {
         $ajax({
@@ -47,6 +54,10 @@
             c: 'd',
           }
         });
+      },
+      login() {
+        Cookies.set('isLogged', true, { expires: 1 });
+        this.$router.push('index');
       },
     },
     components: {
